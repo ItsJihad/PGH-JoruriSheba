@@ -5,8 +5,25 @@ heartIcon.forEach((heart) => {
   heart.addEventListener("click", function () {
     heartcount += 1;
     document.getElementById("heartbucket").innerText = heartcount;
+    document.getElementById("heartbucket-mobi").innerText = heartcount;
   });
 });
+// -----------------------------Reusable Function--------------------------------------------------
+// function heartCounter(icon,bucket){
+//     let inco=document.querySelectorAll(icon)
+//     let buck=document.getElementById(bucket)
+//     let count = 0;
+//     inco.forEach((icon)=>{
+//         icon.addEventListener("click",function(){
+//             count+=1
+//             document.getElementById(bucket).innerText=count
+//         })
+//     })
+    
+// }
+// heartCounter(".hearticon","heartbucket")
+// heartCounter(".hearticon","heartbucket-mobi")
+
 
 // ---------------------------------------------------------------------
 const copyBtn = document.querySelectorAll(".CopyClip");
@@ -18,10 +35,31 @@ copyBtn.forEach((copy,index) => {
   copy.addEventListener("click", function () {
     copycount += 1;
     document.getElementById("copy-span").innerText = copycount;
+    document.getElementById("copy-span-mobi").innerText = copycount;
     navigator.clipboard.writeText(document.querySelectorAll(".service-number")[index].innerText)
     alert(`Copied The Number ${document.querySelectorAll(".service-number")[index].innerText}`)
   });
 });
+// -------------------------Reusable Function -----------------------------------
+
+// function Copier(id,selector){
+//         let copySpan = document.getElementById(id);
+//     const copyBtn = document.querySelectorAll(selector);
+
+//     let count=0
+
+//     copyBtn.forEach((copy,index)=>{
+//         copy.addEventListener("click",function(){
+//             count+=1
+//             copySpan.innerText=count
+//     navigator.clipboard.writeText(document.querySelectorAll(selector)[index].innerText)
+//     alert(`Copied The Number ${document.querySelectorAll(selector)[index].innerText}`)
+//         })
+//     })
+// }
+
+// Copier("copy-span",".CopyClip")
+// Copier("copy-span-mobi",".CopyClip")
 
 // ----------------------------------------------------------------
 let callHistory = document.getElementById("call-history");
@@ -67,6 +105,7 @@ callBtn.forEach((call,index) => {
     }
     let total = coinBucket;
     document.getElementById("coins").innerText = total;
+    document.getElementById("coins-mobi").innerText = total;
     //
 
   });
@@ -75,6 +114,7 @@ callBtn.forEach((call,index) => {
 const clearBtn=document.getElementById("clearBtn")
     clearBtn.addEventListener("click",function(){
         callHistory.innerHTML=""
+         document.querySelector(".call-history-pc").innerHTML=""
         alert("Call History Cleared")
         histo.classList.toggle("hidden");
     })
@@ -82,8 +122,13 @@ const clearBtn=document.getElementById("clearBtn")
 const clearPC=document.getElementById("clearBtnPC")
 clearPC.addEventListener("click",function(){
     document.querySelector(".call-history-pc").innerHTML=""
+    callHistory.innerHTML=""
     alert("Call History Cleared")
 })
+
+
+
+
 
 // ---------------------------------------------------------------------
 
