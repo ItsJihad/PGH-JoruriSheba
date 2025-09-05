@@ -25,6 +25,8 @@ copyBtn.forEach((copy,index) => {
 
 // ----------------------------------------------------------------
 let callHistory = document.getElementById("call-history");
+let historyPC=document.querySelector(".call-history-pc")
+let historyMobile=document.querySelector(".call-history-mobile")
 let ServiceTitle = document.querySelectorAll(".service-title");
 let ServiceNumber = document.querySelectorAll(".service-number");
 let ContextTime = document.getElementById("context-time");
@@ -58,7 +60,9 @@ callBtn.forEach((call,index) => {
       innerContext.appendChild(title);
       innerContext.appendChild(servnumber);
       innerContext.appendChild(time);
-      callHistory.appendChild(innerContext);
+        if ( historyPC)  historyPC.appendChild(innerContext.cloneNode(true));
+      if (historyMobile) historyMobile.appendChild(innerContext.cloneNode(true))
+      
 
     }
     let total = coinBucket;
@@ -71,4 +75,21 @@ callBtn.forEach((call,index) => {
 const clearBtn=document.getElementById("clearBtn")
     clearBtn.addEventListener("click",function(){
         callHistory.innerHTML=""
+        alert("Call History Cleared")
+        histo.classList.toggle("hidden");
     })
+
+const clearPC=document.getElementById("clearBtnPC")
+clearPC.addEventListener("click",function(){
+    document.querySelector(".call-history-pc").innerHTML=""
+    alert("Call History Cleared")
+})
+
+// ---------------------------------------------------------------------
+
+const pop=document.getElementById("mobile-history")
+let histo=document.getElementById("callHistories")
+
+pop.addEventListener("click",function(){
+    histo.classList.toggle("hidden");
+})

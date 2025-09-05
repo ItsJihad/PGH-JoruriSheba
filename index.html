@@ -13,22 +13,22 @@
 </head>
 <body class="bg-[#F5FFF6] ">
     <!-- navbar -->
-    <nav class="p-8 flex justify-between bg-[#FFFFFF] ">
-        <div class="logo">
+    <nav class="p-8  sm:flex justify-between bg-[#FFFFFF] ">
+        <div class="logo flex justify-center item-center">
             <img src="/assets/total logo.png">
            
         </div>
-        <div class="flex gap-4">
+        <div class="hidden sm:flex gap-4">
                 <div class="flex w-[123px] h-[52px] p-3 justify-center items-center gap-[10px] flex-shrink-0 rounded-[50px] bg-[rgba(65,255,107,0.1)] ">
-                    <h5 id="heartbucket">0</h5>
+                    <h5 class="heartbucket" id="heartbucket">0</h5>
                     <img class="w-[30px] h-[30px]"   src="/assets/heart.png">
                 </div>
                 <div class="flex w-[123px] h-[52px] p-3 justify-center items-center gap-[10px] flex-shrink-0 rounded-[50px] bg-[rgba(65,255,107,0.1)]">
-                    <h5 id="coins">100</h5>
+                    <h5 class="coins" id="coins">100</h5>
                     <img class="w-[30px] h-[30px]" src="/assets/coin.png">
                 </div>
                 <div class="flex h-[52px] px-[36px] py-[12px] justify-center items-center gap-[10px] rounded-[50px] bg-[#00A63E] text-white">
-                    <Button> <span id="copy-span">0 </span> Copy</Button>
+                    <Button class="copyspan"> <span  id="copy-span">0 </span> Copy</Button>
                    
                 </div>
          </div>
@@ -44,11 +44,64 @@
         </div>
      </section>
 
-     <div class="flex p-8">
-<!-- HOLDER -->
-     
+     <!-- mobile menu -->
+<section class="sm:hidden mt-4 px-4">
+        <div class="grid grid-cols-2 gap-4">
 
+            
+            <div class="flex items-center justify-center h-[52px] rounded-[50px] bg-[rgba(65,255,107,0.1)]">
+            <h5 id="heartbucket" class="mr-2 heartbucket">0</h5>
+            <img class="w-[28px] h-[28px]" src="/assets/heart.png" alt="heart">
+            </div>
 
+        
+            <div class="flex items-center justify-center h-[52px] rounded-[50px] bg-[rgba(65,255,107,0.1)]">
+            <h5 id="coins" class="mr-2 coins">100</h5>
+            <img class="w-[28px] h-[28px]" src="/assets/coin.png" alt="coin">
+            </div>
+
+        
+            <button class="flex items-center justify-center h-[52px] rounded-[50px] bg-[#00A63E] text-white">
+            <span id="copy-span" class="mr-2 copyspan">0</span> Copy
+            </button>
+
+            
+            <button id="mobile-history" class="flex items-center justify-center h-[52px] rounded-[50px] bg-[#00A26E] text-white">
+            History
+            </button>
+
+        </div>
+</section>
+
+<section class="  hidden sm:hidden  lg:hidden" id="callHistories">
+        
+        
+    <div class="flex mt-6  p-6 flex-col items-start gap-4 self-stretch rounded-[12px] bg-white shadow-[0_2px_3px_0_rgba(0,0,0,0.15)] ">
+            <div class="flex justify-between items-center self-stretch">
+                <img class="w-[24px] h-[24px]" src="/assets/clock.png"> <span >Call History</span>
+                <button class="flex h-[40px] px-[26px] py-[12px] justify-center items-center  rounded-[50px] bg-[#00A63E] text-white" id="clearBtn">
+                Clear
+                </button>
+                
+
+            </div>
+           
+                <div class="gap-4 p-4  items-center self-stretch rounded-[8px] call-history-mobile "id="call-history">
+                    <div class="flex gap-6">
+                    <div >
+                        <h3 id="context-holder"></h3>
+                    <h3 id="context-number"></h3>
+
+                    </div>
+                    <h3 id="context-time"></h3>
+                    </div>
+                </div>
+    </div>
+</section>
+
+ <!--  -->
+
+<div class="flex p-8">
      <!-- cards Section  -->
      <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4 sm:p-8 max-w-7xl mx-auto">
         
@@ -279,20 +332,20 @@
         </div>
      </section>
 
-<section >
+<section class="  hidden  lg:block" id="callHistories">
         
         <!-- history -->
     <div class="flex mt-8  min-w-80 p-6 flex-col items-start gap-4 self-stretch rounded-[12px] bg-white shadow-[0_2px_3px_0_rgba(0,0,0,0.15)] min-h-235 ">
             <div class="flex justify-between items-center self-stretch">
                 <img class="w-[24px] h-[24px]" src="/assets/clock.png"> <span >Call History</span>
-                <button class="flex h-[40px] px-[26px] py-[12px] justify-center items-center  rounded-[50px] bg-[#00A63E] text-white" id="clearBtn">
+                <button class="flex h-[40px] px-[26px] py-[12px] justify-center items-center  rounded-[50px] bg-[#00A63E] text-white" id="clearBtnPC">
                 Clear
                 </button>
                 
 
             </div>
             <!-- inner context -->
-                <div class="gap-4 p-4  items-center self-stretch rounded-[8px] "id="call-history">
+                <div class="gap-4 p-4  items-center self-stretch rounded-[8px] call-history-pc ">
                     <div class="flex gap-6">
                     <div >
                         <h3 id="context-holder"></h3>
