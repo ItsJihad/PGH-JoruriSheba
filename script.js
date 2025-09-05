@@ -1,31 +1,74 @@
+const heartIcon = document.querySelectorAll(".hearticon");
 let heartBucket = document.getElementById("heartbucket");
-const heartIcon = document.getElementById("hearticon");
-
-heartBucket = 1;
-heartIcon.addEventListener("click", function heartCalc() {
-  let total = heartBucket++;
-  document.getElementById("heartbucket").innerText = total;
+let heartcount = 0;
+heartIcon.forEach((heart) => {
+  heart.addEventListener("click", function () {
+    heartcount += 1;
+    document.getElementById("heartbucket").innerText = heartcount;
+  });
 });
 
+// ---------------------------------------------------------------------
+const copyBtn = document.querySelectorAll(".CopyClip");
 let copySpan = document.getElementById("copy-span");
-let copyBtn = document.getElementById("copy-btn");
 
-copySpan = 1;
-copyBtn.addEventListener("click", function () {
-  let total = copySpan++;
-  document.getElementById("copy-span").innerText = total;
+let copycount = 0;
+
+copyBtn.forEach((copy,index) => {
+  copy.addEventListener("click", function () {
+    copycount += 1;
+    document.getElementById("copy-span").innerText = copycount;
+    navigator.clipboard.writeText(document.querySelectorAll(".service-number")[index].innerText)
+    alert(`Copied The Number ${document.querySelectorAll(".service-number")[index].innerText}`)
+  });
 });
 
-let coinBucket = parseInt(document.getElementById("coins").innerText);
-let callBtn = document.getElementById("call-btn");
+// ----------------------------------------------------------------
+let callHistory = document.getElementById("call-history");
+let ServiceTitle = document.querySelectorAll(".service-title");
+let ServiceNumber = document.querySelectorAll(".service-number");
+let ContextTime = document.getElementById("context-time");
 
-callBtn.addEventListener("click", function () {
-  if(coinBucket<=0){
-    callBtn.disabled = true;
-    callBtn.style.border = "2px solid red";
-    }else{
-        coinBucket -= 10;
+const callBtn = document.querySelectorAll(".CallClip");
+let callSpan = document.getElementById("call-btn");
+let coinBucket = parseInt(document.getElementById("coins").innerText);
+
+callBtn.forEach((call,index) => {
+  call.addEventListener("click", function () {
+    if (coinBucket <= 0) {
+      callSpan.disabled = true;
+      alert("You don't Have Coin Left")
+    } else {
+      coinBucket -= 20;
+      alert(`Calling ${ServiceTitle[index].innerText} , ${ServiceNumber[index].innerText}`)
+
+      const innerContext = document.createElement("div");
+      innerContext.className =
+        "flex gap-2 mt-4 p-4  items-center self-stretch rounded-[8px] bg-[#FAFAFA] font-['Hind_Madurai']";
+
+      let title = document.createElement("h1");
+      title.innerText = ServiceTitle[index].innerText;
+
+      let servnumber = document.createElement("h2");
+      servnumber.innerText = ServiceNumber[index].innerText;
+
+      let time = document.createElement("time");
+      time.innerText = new Date().toLocaleTimeString();
+
+      innerContext.appendChild(title);
+      innerContext.appendChild(servnumber);
+      innerContext.appendChild(time);
+      callHistory.appendChild(innerContext);
+
     }
     let total = coinBucket;
-  document.getElementById("coins").innerText = total;
+    document.getElementById("coins").innerText = total;
+    //
+
+  });
 });
+// --------------------------------------------------------------------
+const clearBtn=document.getElementById("clearBtn")
+    clearBtn.addEventListener("click",function(){
+        callHistory.innerHTML=""
+    })
